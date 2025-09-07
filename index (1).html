@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rateio Básico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Rateio Básico</h1>
+      <div class="muted">Divida gastos de forma simples e rápida.</div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Pessoas</h2>
+        <div id="peopleList" class="list"></div>
+        <form id="addPersonForm" class="row gap">
+          <input id="personName" placeholder="Nome (ex: Caio)" required>
+          <button class="primary">Adicionar</button>
+        </form>
+        <details style="margin-top:8px;">
+          <summary class="muted">Adicionar em lote</summary>
+          <textarea id="bulkNames" placeholder="Um nome por linha"></textarea>
+          <button id="bulkAdd" class="secondary" style="margin-top:6px;">Adicionar nomes</button>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Nova despesa</h2>
+        <form id="expenseForm" class="col gap">
+          <div class="row gap">
+            <input id="expDesc" placeholder="Descrição (ex: Mercado)" required>
+            <input id="expAmount" inputmode="decimal" placeholder="Valor (ex: 120,50)" required>
+          </div>
+          <div class="row gap">
+            <select id="expPayer" required></select>
+            <label class="checkbox">
+              <input type="checkbox" id="excludePayer">
+              Excluir pagador da divisão
+            </label>
+          </div>
+          <button class="primary">Adicionar despesa</button>
+        </form>
+
+        <h3 style="margin-top:16px;">Despesas</h3>
+        <table id="expensesTable">
+          <thead><tr><th>Descrição</th><th>Pagou</th><th>Total</th><th>Divisão</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Saldos</h2>
+        <div id="balances" class="list"></div>
+        <hr>
+        <h3>Pagamentos sugeridos</h3>
+        <div id="suggestions" class="list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <button id="exportBtn" class="secondary">Exportar JSON</button>
+      <label class="import-label">
+        Importar JSON
+        <input type="file" id="importInput" accept="application/json">
+      </label>
+      <span class="muted">Dados ficam no seu navegador (localStorage).</span>
+    </footer>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
